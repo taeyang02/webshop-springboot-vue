@@ -12,7 +12,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin
 public class ProductController {
     private final IProductService productService;
     @GetMapping("")
