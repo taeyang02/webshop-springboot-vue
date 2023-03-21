@@ -4,8 +4,14 @@ import com.example.shopping.Model.Product;
 import com.example.shopping.Service.IProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.xml.transform.Result;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +22,12 @@ import java.util.Optional;
 public class ProductController {
     private final IProductService productService;
     @GetMapping("")
-    public List<Product> findAll() {
-        return productService.findAll();
+    public ResponseEntity<Page<Product>> getAllProducts(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12") int size
+    ) {
+        Page<Product> products = (Page<Product>) productService.findAll(PageRequest.of(page,size));
+        return ResponseEntity.ok(products);
     }
 
     @GetMapping("/{ids}")

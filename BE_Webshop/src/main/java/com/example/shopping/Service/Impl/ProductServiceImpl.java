@@ -5,6 +5,8 @@ import com.example.shopping.Reponsitory.ProductRepository;
 import com.example.shopping.Service.IProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,9 @@ public class ProductServiceImpl implements IProductService {
     private final ProductRepository productRepository;
 
     @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public Page<?> findAll(Pageable pageable) {
+    Page<Product> result = productRepository.findAll(pageable);
+        return result;
     }
 
     @Override
