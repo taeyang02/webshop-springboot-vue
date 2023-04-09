@@ -19,7 +19,8 @@ export default {
         callGetProuct(){
             getProduct().then(res => {
                 console.log(res)
-                this.products = res.data.content
+                this.products = res.data.data.content
+                console.log(this.products)
             })
         }
 }
