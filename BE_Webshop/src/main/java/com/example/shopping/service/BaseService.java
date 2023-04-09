@@ -1,10 +1,8 @@
-package com.example.shopping.service.BaseService;
-
+package com.example.shopping.service;
 import com.example.shopping.common.payload.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface BaseService<T, ID>{
-
+public interface BaseService<T,ID> {
     T create(T dto);
     T update(T dto);
     T delete(T dto);
@@ -20,3 +18,4 @@ public interface BaseService<T, ID>{
 
     T findById(ID id);
 }
+
