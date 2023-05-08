@@ -1,13 +1,11 @@
-package com.example.shopping.model;
+package com.example.shopping.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -57,4 +55,9 @@ public class Account {
     @Column(name = "username", nullable = false, length = 20)
     private String username;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "account_role",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    Set<Role> roles;
 }

@@ -1,19 +1,23 @@
 package com.example.shopping.controller;
 
 import com.example.shopping.common.payload.Result;
-import com.example.shopping.model.DTO.ProductDto;
-import com.example.shopping.model.Product;
+import com.example.shopping.domain.DTO.ProductDTO;
+import com.example.shopping.domain.model.Product;
 import com.example.shopping.service.IProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentMap;
 
 @RestController
 @RequestMapping("/products")
@@ -21,7 +25,8 @@ import java.util.Optional;
 @CrossOrigin
 public class ProductController {
     private final IProductService productService;
-    @GetMapping("")
+    private final CacheManager cacheManager;
+    @GetMapping(value = "")
     public Result<?> getAllProducts(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "12") int size
@@ -30,14 +35,27 @@ public class ProductController {
         return Result.result(HttpStatus.OK.value(),"Tìm Trang Thành Công",products);
     }
 
-    @GetMapping("/{id}")
+    @Cacheable(value = "product", key = "#id")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Result<?> findById(@PathVariable Long id) {
-        return Result.result(HttpStatus.OK.value(),"Tìm Kiếm Thành Công",productService.findById(id));
+        ProductDTO product = productService.findById(id);
+        if (product == null) {
+            throw new RuntimeException("Product not found with id: " + id);
+        }
+        return Result.result(HttpStatus.OK.value(),"Tìm Kiếm Thành Công",product);
+
     }
 
     @PostMapping("create")
-    public Result<?> save(@RequestBody ProductDto dto) {
+    public Result<?> save(@RequestBody ProductDTO dto) {
         return Result.result(HttpStatus.OK.value(),"Thêm Thành Công",productService.create(dto));
+    }
+
+    @GetMapping("/cache")
+    public List<Object> getAllCachedData() {
+        Cache cache = cacheManager.getCache("product");
+        ConcurrentMap<Object, Object> nativeCache = (ConcurrentMap<Object, Object>) cache.getNativeCache();
+        return new ArrayList<>(nativeCache.values());
     }
 
 }

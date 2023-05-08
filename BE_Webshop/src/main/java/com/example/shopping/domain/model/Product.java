@@ -1,4 +1,4 @@
-package com.example.shopping.model;
+package com.example.shopping.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -56,7 +56,7 @@ public class Product {
 
     @Column(name = "quantity_sold")
     private Integer quantitySold;
-    @JsonIgnore
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
