@@ -1,7 +1,7 @@
-package com.example.shopping.model.DTO;
+package com.example.shopping.domain.DTO;
 
-import com.example.shopping.model.Category;
-import lombok.AllArgsConstructor;
+import com.example.shopping.domain.model.Category;
+import com.example.shopping.domain.model.Product;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 import java.time.Instant;
 
 /**
- * A DTO for the {@link com.example.shopping.model.Product} entity
+ * A DTO for the {@link Product} entity
  */
 @Data
-public class ProductDto implements Serializable {
+public class ProductDTO implements Serializable {
     private Long id;
     private String createBy;
     private Instant createDate;

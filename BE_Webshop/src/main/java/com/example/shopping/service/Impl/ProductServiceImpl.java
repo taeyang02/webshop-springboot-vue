@@ -1,18 +1,14 @@
 package com.example.shopping.service.Impl;
 
-import com.example.shopping.model.DTO.ProductDto;
-import com.example.shopping.model.Mapper.ProductMapper;
-import com.example.shopping.model.Product;
+import com.example.shopping.domain.DTO.ProductDTO;
+import com.example.shopping.domain.Mapper.ProductMapper;
+import com.example.shopping.domain.model.Product;
 import com.example.shopping.reponsitory.ProductRepository;
 import com.example.shopping.service.IProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,18 +23,18 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ProductDto create(ProductDto dto) {
+    public ProductDTO create(ProductDTO dto) {
         return mapper.toDto(productRepository.save(mapper.toEntity(dto)));
     }
 
     @Override
-    public ProductDto update(ProductDto dto) {
+    public ProductDTO update(ProductDTO dto) {
         dto.setStatus(false);
         return mapper.toDto(productRepository.save(mapper.toEntity(dto)));
     }
 
     @Override
-    public ProductDto delete(ProductDto dto) {
+    public ProductDTO delete(ProductDTO dto) {
         dto.setStatus(false);
         return mapper.toDto(productRepository.save(mapper.toEntity(dto)));
     }
@@ -50,7 +46,7 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ProductDto findById(Long aLong) {
+    public ProductDTO findById(Long aLong) {
         return mapper.toDto(productRepository.findById(aLong).orElse(null));
     }
 }
