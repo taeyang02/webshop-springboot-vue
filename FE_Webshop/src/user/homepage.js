@@ -10,18 +10,31 @@ export default {
     data(){
         return{
             products: [],
+            currentPage: 0,
+            totalPages: 0,
         }
     },
     created() {
         this.callGetProuct()
     },
     methods: {
-        callGetProuct(){
-            getProduct().then(res => {
-                console.log(res)
-                this.products = res.data.data.content
-                console.log(this.products)
+        callGetProuct(params){
+            getProduct(params).then(res => {
+                console.log(res.data)
+                this.products = res.data.result
+                this.currentPage = res.data.pageNumber+1
+                this.totalPages = res.data.totalPages
             })
+        },
+        nextPage() {
+            this.currentPage++
+            if (this.currentPage > this.totalPages) this.currentPage = 1
+            this.callGetProuct({page: this.currentPage - 1 })
+        },
+        previousPage() {
+            this.currentPage--
+            if (this.currentPage === 0) this.currentPage = this.totalPages
+            this.callGetProuct({page: this.currentPage - 1 })
         }
 }
 }
