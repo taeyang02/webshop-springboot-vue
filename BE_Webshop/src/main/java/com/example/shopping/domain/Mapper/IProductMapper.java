@@ -6,5 +6,5 @@ import com.example.shopping.domain.model.Product;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface ProductMapper extends IEntityMapper<ProductDTO, Product> {
+public interface IProductMapper extends IEntityMapper<ProductDTO, Product> {
 }
