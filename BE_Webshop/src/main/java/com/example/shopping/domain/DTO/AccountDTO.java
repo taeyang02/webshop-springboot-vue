@@ -22,6 +22,6 @@ public class AccountDTO implements Serializable {
     private Byte gender;
     private String password;
     private String phoneNumber;
-    private Byte status;
+    private Boolean status;
     private String username;
 }

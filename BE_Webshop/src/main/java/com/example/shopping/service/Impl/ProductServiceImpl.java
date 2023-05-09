@@ -2,7 +2,7 @@ package com.example.shopping.service.Impl;
 
 import com.example.shopping.Utils.GetPage;
 import com.example.shopping.domain.DTO.ProductDTO;
-import com.example.shopping.domain.Mapper.ProductMapper;
+import com.example.shopping.domain.Mapper.IProductMapper;
 import com.example.shopping.domain.model.Product;
 import com.example.shopping.reponsitory.ProductRepository;
 import com.example.shopping.service.IProductService;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements IProductService {
     private final ProductRepository productRepository;
-    private final ProductMapper mapper;
+    private final IProductMapper mapper;
     private final GetPage getPage;
 
     private com.example.shopping.common.payload.Page<?> getPage(Page<Product> result) {
