@@ -1,4 +1,4 @@
-package com.example.shopping.domain.Mapper.Base;
+package com.example.shopping.domain.mapper.Base;
 
 import java.util.Collection;
 import java.util.List;

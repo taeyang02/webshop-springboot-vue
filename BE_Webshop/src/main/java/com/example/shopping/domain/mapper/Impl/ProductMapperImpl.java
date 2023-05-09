@@ -1,7 +1,7 @@
-package com.example.shopping.domain.Mapper.Impl;
+package com.example.shopping.domain.mapper.Impl;
 
-import com.example.shopping.domain.DTO.ProductDTO;
-import com.example.shopping.domain.Mapper.IProductMapper;
+import com.example.shopping.domain.dto.ProductDTO;
+import com.example.shopping.domain.mapper.IProductMapper;
 import com.example.shopping.domain.model.Product;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
