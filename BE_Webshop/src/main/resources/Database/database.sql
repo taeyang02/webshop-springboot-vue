@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
--- Host: localhost    Database: java5_asm
+-- Host: localhost    Database: shoptaeduong
 -- ------------------------------------------------------
 -- Server version	8.0.30
 
@@ -193,6 +193,7 @@ CREATE TABLE `product` (
   `image` varchar(455) DEFAULT NULL,
   `quantity_sold` int DEFAULT '0',
   `category_id` bigint NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `FK1mtsbur82frn64de7balymq9s` (`category_id`),
   CONSTRAINT `FK1mtsbur82frn64de7balymq9s` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
@@ -205,7 +206,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Dáng Rộng',1,'Áo Thun',90000,1786,'S,M,L,XL,XXL','anh1.png',814,1),(2,'admin','2022-10-18 03:52:46.800000',NULL,NULL,'Lỡ Tay',1,'Áo Forn Rộng',120000,1386,'S,M,L,XL,XXL','anh2.png',22,1),(3,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay',1,'Áo Form Rộng Unisex',14800,1391,'S,M,L,XL,XXL','anh3.png',184,1),(4,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay - Unisex',1,'Áo Form Rộng Gucci',14800,1399,'S,M,L,XL,XXL','anh4.png',201,1),(5,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Chất Vải Dày',1,'Áo Form Rộng Dio',14800,1400,'S,M,L,XL,XXL','anh5.png',153,1),(6,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Logo Ver',1,'Áo Khá Bảnh',14800,1397,'S,M,L,XL,XXL','anh6.png',148,1),(7,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Unisex',1,'Áo Polo',14800,1392,'S,M,L,XL,XXL','anh7.png',1788,1),(8,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Unisex',1,'Áo Hai Dây',14800,1400,'S,M,L,XL,XXL','anh8.png',472,1),(9,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay',1,'Áo Thun Sexy',14800,1400,'S,M,L,XL,XXL','anh9.png',47,1),(10,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay',1,'Áo Cổ Tròn',14800,1399,'S,M,L,XL,XXL','anh10.png',13,1),(11,'admin','2022-10-13 16:52:54.700000',NULL,NULL,'Lỡ Tay',1,'Áo 2 dây promax',14800,1388,'S,M,L,XL,XXL','anh11.png',14,1),(28,'admin','2022-10-15 22:22:50.871000',NULL,NULL,'Áo Mẫu Cosplay Couple Nữ',0,'UnMakerCode',100000,1000,'S,M,L,XL,XXL','graphviz15102022102250.png',5800,1),(29,'admin','2022-10-15 22:24:12.870000',NULL,NULL,'Áo Mẫu Cosplay Couple Nữ',1,'Áo Cosplay',100000,987,'S,M,L,XL,XXL','z3802802767878_ec2f8b91b0d5a3401d2bb7c2c7c17a1a15102022102412.png',587,1),(30,'admin','2022-10-16 00:20:59.851000',NULL,NULL,'Thun ',1,'Áo Cosplay',100000,994,'S,M,L,XL,XXL','bex.png',5006,1),(31,'admin','2022-10-17 11:36:33.205000',NULL,NULL,'Thun 2 Dây',1,'Váy',100000,1000,'S,M,L,XL,XXL','test17102022113633.png',0,2),(33,'admin','2022-10-19 17:01:59.395000',NULL,NULL,'Váy Xinh Cho Những Cô Làng Xesy',1,'Váy Xinh',100000,1000,'S,M,L,XL','gai-xinh-mac-vay-xep-ly-ngan-1419102022050159.png',0,2),(34,'admin','2022-10-19 17:01:59.395000','admin','2022-10-19 17:48:25.811000','Áo Mẫu Cosplay Couple Nữ',1,'Váy Xinh',100000,997,'S,M,L,XL','e13e39a78812ebeef80deab062f471b119102022054825.png',3,2),(35,'admin','2022-10-19 17:01:59.395000','admin','2022-10-19 17:44:03.618000','Váy Xinh Cho Những Cô Làng Xesy',1,'Váy Xinh',100000,995,'S,M,L,XL','Untitled19102022054403.png',5,2),(36,'admin','2022-10-24 22:29:36.193000',NULL,NULL,'Thun 2 Dây',1,'Áo Cosplay',100000,998,'S,M,L,XL','f5aa930cb2d404114741d3631a91bfa624102022102936.png',2,1);
+INSERT INTO `product` VALUES (1,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Dáng Rộng',1,'Áo Thun',90000,1786,'S,M,L,XL,XXL','anh1.png',814,1,1),(2,'admin','2022-10-18 03:52:46.800000',NULL,NULL,'Lỡ Tay',1,'Áo Forn Rộng',120000,1386,'S,M,L,XL,XXL','anh2.png',22,1,1),(3,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay',1,'Áo Form Rộng Unisex',14800,1391,'S,M,L,XL,XXL','anh3.png',184,1,1),(4,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay - Unisex',1,'Áo Form Rộng Gucci',14800,1399,'S,M,L,XL,XXL','anh4.png',201,1,1),(5,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Chất Vải Dày',1,'Áo Form Rộng Dio',14800,1400,'S,M,L,XL,XXL','anh5.png',153,1,1),(6,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Logo Ver',1,'Áo Khá Bảnh',14800,1397,'S,M,L,XL,XXL','anh6.png',148,1,1),(7,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Unisex',1,'Áo Polo',14800,1392,'S,M,L,XL,XXL','anh7.png',1788,1,1),(8,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Unisex',1,'Áo Hai Dây',14800,1400,'S,M,L,XL,XXL','anh8.png',472,1,1),(9,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay',1,'Áo Thun Sexy',14800,1400,'S,M,L,XL,XXL','anh9.png',47,1,1),(10,'admin','2022-10-13 16:52:54.800000',NULL,NULL,'Lỡ Tay',1,'Áo Cổ Tròn',14800,1399,'S,M,L,XL,XXL','anh10.png',13,1,1),(11,'admin','2022-10-13 16:52:54.700000',NULL,NULL,'Lỡ Tay',1,'Áo 2 dây promax',14800,1388,'S,M,L,XL,XXL','anh11.png',14,1,1),(28,'admin','2022-10-15 22:22:50.871000',NULL,NULL,'Áo Mẫu Cosplay Couple Nữ',0,'UnMakerCode',100000,1000,'S,M,L,XL,XXL','graphviz15102022102250.png',5800,1,1),(29,'admin','2022-10-15 22:24:12.870000',NULL,NULL,'Áo Mẫu Cosplay Couple Nữ',1,'Áo Cosplay',100000,987,'S,M,L,XL,XXL','z3802802767878_ec2f8b91b0d5a3401d2bb7c2c7c17a1a15102022102412.png',587,1,1),(30,'admin','2022-10-16 00:20:59.851000',NULL,NULL,'Thun ',1,'Áo Cosplay',100000,994,'S,M,L,XL,XXL','bex.png',5006,1,1),(31,'admin','2022-10-17 11:36:33.205000',NULL,NULL,'Thun 2 Dây',1,'Váy',100000,1000,'S,M,L,XL,XXL','test17102022113633.png',0,2,1),(33,'admin','2022-10-19 17:01:59.395000',NULL,NULL,'Váy Xinh Cho Những Cô Làng Xesy',1,'Váy Xinh',100000,1000,'S,M,L,XL','gai-xinh-mac-vay-xep-ly-ngan-1419102022050159.png',0,2,1),(34,'admin','2022-10-19 17:01:59.395000','admin','2022-10-19 17:48:25.811000','Áo Mẫu Cosplay Couple Nữ',1,'Váy Xinh',100000,997,'S,M,L,XL','e13e39a78812ebeef80deab062f471b119102022054825.png',3,2,1),(35,'admin','2022-10-19 17:01:59.395000','admin','2022-10-19 17:44:03.618000','Váy Xinh Cho Những Cô Làng Xesy',1,'Váy Xinh',100000,995,'S,M,L,XL','Untitled19102022054403.png',5,2,1),(36,'admin','2022-10-24 22:29:36.193000',NULL,NULL,'Thun 2 Dây',1,'Áo Cosplay',100000,998,'S,M,L,XL','f5aa930cb2d404114741d3631a91bfa624102022102936.png',2,1,1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,11 +239,11 @@ INSERT INTO `role` VALUES (1,'admin','2022-10-09 21:09:28.000000',NULL,NULL,'adm
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'java5_asm'
+-- Dumping events for database 'shoptaeduong'
 --
 
 --
--- Dumping routines for database 'java5_asm'
+-- Dumping routines for database 'shoptaeduong'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -254,4 +255,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-21  9:23:05
+-- Dump completed on 2023-05-08 18:00:15

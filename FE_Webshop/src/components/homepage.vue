@@ -18,13 +18,21 @@
       </div>
     </div>
   </div>
+  <pagination
+      :next-page="nextPage"
+      :previous-page="previousPage"
+      :total-pages="totalPages"
+      :current-page="currentPage"
+  />
 </div>
   <lineFooter/>
 </template>
 <script>
 import homepages from '@/user/homepage'
+import pagination from '@/utils/pagination.vue'
 export default {
-  mixins:[homepages]
+  components: {pagination},
+  mixins:[homepages],
 }
 
 </script>

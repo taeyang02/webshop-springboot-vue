@@ -23,7 +23,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     (response) => {
         // Xử lý khi nhận được response
-        return response;
+        return response.data;
     },
     (error) => {
         // Xử lý khi response gặp lỗi

@@ -31,8 +31,7 @@ public class ProductController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "12") int size
     ) {
-        Page<Product> products = (Page<Product>) productService.findAll(PageRequest.of(page,size));
-        return Result.result(HttpStatus.OK.value(),"Tìm Trang Thành Công",products);
+        return Result.result(HttpStatus.OK.value(),"Tìm Trang Thành Công",productService.fillAll(PageRequest.of(page,size)));
     }
 
     @Cacheable(value = "product", key = "#id")
