@@ -1,4 +1,4 @@
-package com.example.shopping.controller;
+package com.example.shopping.controller.user;
 
 import com.example.shopping.common.payload.Result;
 import com.example.shopping.domain.dto.ProductDTO;

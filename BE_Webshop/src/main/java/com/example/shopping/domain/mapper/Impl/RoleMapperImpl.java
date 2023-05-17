@@ -5,8 +5,10 @@ import com.example.shopping.domain.mapper.IRoleMapper;
 import com.example.shopping.domain.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
+@Component
 public class RoleMapperImpl implements IRoleMapper {
     private final ModelMapper mapper;
 

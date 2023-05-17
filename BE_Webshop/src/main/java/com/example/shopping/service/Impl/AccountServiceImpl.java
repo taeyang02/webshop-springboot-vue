@@ -11,16 +11,19 @@ import com.example.shopping.reponsitory.RoleRepository;
 import com.example.shopping.service.IAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements IAccountService {
     private final AccountRepository accountRepository;
     private final RoleRepository roleRepository;
     private final IAccountMapper mapper;
     private final GetPage getPage;
+
     @Override
     public AccountDTO create(AccountDTO dto) {
         Account account = mapper.toEntity(dto);

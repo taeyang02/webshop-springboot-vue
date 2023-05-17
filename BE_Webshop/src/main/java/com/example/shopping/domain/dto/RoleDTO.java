@@ -1,6 +1,7 @@
 package com.example.shopping.domain.dto;
 
 import com.example.shopping.domain.model.ERole;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
 
@@ -17,6 +18,6 @@ public class RoleDTO implements Serializable {
     private Instant createDate;
     private String modifiedBy;
     private Instant modifiedDate;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private ERole name;
 }
