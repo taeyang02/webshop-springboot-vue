@@ -1,4 +1,4 @@
-package com.example.shopping.domain.DTO;
+package com.example.shopping.domain.dto;
 
 import com.example.shopping.domain.model.Category;
 import lombok.Data;

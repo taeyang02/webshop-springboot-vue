@@ -41,7 +41,7 @@ public class Account {
     private String fullname;
 
     @Column(name = "gender")
-    private Byte gender;
+    private Boolean gender;
 
     @Column(name = "password", nullable = false, length = 130)
     private String password;
@@ -50,7 +50,7 @@ public class Account {
     private String phoneNumber;
 
     @Column(name = "status")
-    private Byte status;
+    private Boolean status;
 
     @Column(name = "username", nullable = false, length = 20)
     private String username;

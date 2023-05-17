@@ -2,8 +2,8 @@ package com.example.shopping.service.Impl;
 
 import com.example.shopping.Utils.GetPage;
 import com.example.shopping.common.payload.Page;
-import com.example.shopping.domain.DTO.AccountDTO;
-import com.example.shopping.domain.Mapper.IAccountMapper;
+import com.example.shopping.domain.dto.AccountDTO;
+import com.example.shopping.domain.mapper.IAccountMapper;
 import com.example.shopping.domain.model.Account;
 import com.example.shopping.domain.model.Role;
 import com.example.shopping.reponsitory.AccountRepository;
@@ -11,16 +11,19 @@ import com.example.shopping.reponsitory.RoleRepository;
 import com.example.shopping.service.IAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements IAccountService {
     private final AccountRepository accountRepository;
     private final RoleRepository roleRepository;
     private final IAccountMapper mapper;
     private final GetPage getPage;
+
     @Override
     public AccountDTO create(AccountDTO dto) {
         Account account = mapper.toEntity(dto);

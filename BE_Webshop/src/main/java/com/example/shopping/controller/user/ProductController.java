@@ -1,14 +1,12 @@
-package com.example.shopping.controller;
+package com.example.shopping.controller.user;
 
 import com.example.shopping.common.payload.Result;
-import com.example.shopping.domain.DTO.ProductDTO;
-import com.example.shopping.domain.model.Product;
+import com.example.shopping.domain.dto.ProductDTO;
 import com.example.shopping.service.IProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

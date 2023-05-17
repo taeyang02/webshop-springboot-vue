@@ -1,8 +1,8 @@
 package com.example.shopping.service.Impl;
 
 import com.example.shopping.Utils.GetPage;
-import com.example.shopping.domain.DTO.ProductDTO;
-import com.example.shopping.domain.Mapper.IProductMapper;
+import com.example.shopping.domain.dto.ProductDTO;
+import com.example.shopping.domain.mapper.IProductMapper;
 import com.example.shopping.domain.model.Product;
 import com.example.shopping.reponsitory.ProductRepository;
 import com.example.shopping.service.IProductService;
