@@ -1,7 +1,7 @@
 import axios from 'axios';
-//c
+
 const instance = axios.create({
-    baseURL: 'https://www.duonghasagi.online/api/products',
+    baseURL: 'https://www.duonghasagi.online/api/',
     headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
