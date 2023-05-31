@@ -37,12 +37,13 @@ jobs:
        tar -czvf /tmp/nVXaBtosQN.tar.gz -C ${{ env.TARGET_PATH }}/dist .
     
     - name: Copy files to EC2
-      run: |
-        rsync -r ${{ env.TARGET_PATH }}/dist/ ${{ env.SSH_USERNAME }}@${{ env.EC2_HOST }}:/var/www/duonghasagi.online/html/
-      env:
-        TARGET_PATH: ${{ env.TARGET_PATH }}
-        SSH_USERNAME: ${{ env.SSH_USERNAME }}
-        EC2_HOST: ${{ env.EC2_HOST }}
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ env.EC2_HOST }}
+        username: ${{ env.SSH_USERNAME }}
+        key: ${{ env.SSH_PRIVATE_KEY }}
+        source: '${{ env.TARGET_PATH }}/dist/'
+        target: /var/www/duonghasagi.online/temp
 
     - name: SSH into EC2
       uses: appleboy/ssh-action@master
