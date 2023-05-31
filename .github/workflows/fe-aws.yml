@@ -31,6 +31,10 @@ jobs:
         cd ${{ env.TARGET_PATH }}
         npm install
         npm run build
+        
+    - name: Tar files
+      run: |
+       tar -czvf /tmp/nVXaBtosQN.tar.gz -C ${{ env.TARGET_PATH }}/dist .
     
     - name: Copy files to EC2
       uses: appleboy/scp-action@master
@@ -38,7 +42,7 @@ jobs:
         host: ${{ env.EC2_HOST }}
         username: ${{ env.SSH_USERNAME }}
         key: ${{ env.SSH_PRIVATE_KEY }}
-        source: '${{ env.TARGET_PATH }}/dist/.'
+        source: '/tmp/nVXaBtosQN.tar.gz'
         target: '/var/www/duonghasagi.online/html'
     
     - name: SSH into EC2
