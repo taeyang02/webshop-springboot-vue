@@ -51,6 +51,8 @@ jobs:
           {
             if [$(tmux list-sessions -F '#{session_name}' | grep "deployment") == "deployment"]; then
               echo "hello"
+            else
+              echo "kakaka"
             fi
           }
           tmux kill-session -t deployment
