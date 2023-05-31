@@ -49,6 +49,8 @@ jobs:
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
           #sudo kill -9 $(sudo netstat -plten | grep java | awk '{print $9}' | cut -d '/' -f1)
+          if tmux has-session -t deployment; then
           tmux kill-session -t deployment
+          fi
           cd BE/${{ env.TARGET_PATH }}/target
           tmux new-session -d -s deployment 'java -jar ${{ env.JAR_FILE_NAME }}'
