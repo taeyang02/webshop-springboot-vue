@@ -40,6 +40,7 @@ jobs:
         key: ${{ env.SSH_PRIVATE_KEY }}
         source: '${{ env.TARGET_PATH }}/dist/*'
         target: '/var/www/duonghasagi.online/html'
+        strip-components: 2
     
     - name: SSH into EC2
       uses: appleboy/ssh-action@master
