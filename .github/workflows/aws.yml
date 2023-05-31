@@ -39,7 +39,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         source: '${{ env.TARGET_PATH }}/target/${{ env.JAR_FILE_NAME }}'
-        target: '${{ env.TARGET_PATH }}'
+        target: ''
         
     - name: Deployding ... 
       uses: appleboy/ssh-action@master
