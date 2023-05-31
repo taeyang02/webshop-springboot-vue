@@ -26,7 +26,7 @@ jobs:
         distribution: 'adopt'
     
     - name: Build JAR
-      run: cd BE && mvn package -DskipTests
+      run: cd BE_Webshop && mvn package -DskipTests
     
     - name: Rename JAR
       run: |
@@ -38,7 +38,7 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_PRIVATE_KEY }}
-        source: 'BE/target/${{ env.JAR_FILE_NAME }}'
+        source: 'BE_Webshop/target/${{ env.JAR_FILE_NAME }}'
         target: '${{ env.TARGET_PATH }}'
         
     - name: Deployding ... 
