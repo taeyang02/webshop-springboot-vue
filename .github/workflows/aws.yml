@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths: 
-     - 'BE_Webshop'
+     - 'BE_Webshop/**'
 
 env:
   JAR_FILE_NAME: 'TaeDeploySNAPSHOT2.jar'
