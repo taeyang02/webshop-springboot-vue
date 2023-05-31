@@ -1,4 +1,5 @@
 import axios from 'axios';
+//c
 const instance = axios.create({
     baseURL: 'https://www.duonghasagi.online/api/products',
     headers: {
