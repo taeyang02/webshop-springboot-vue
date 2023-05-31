@@ -26,7 +26,7 @@ jobs:
         distribution: 'adopt'
     
     - name: Build JAR
-      run: mvn package -DskipTests
+      run: cd BE && mvn package -DskipTests
     
     - name: Rename JAR
       run: |
