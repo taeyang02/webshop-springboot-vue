@@ -38,7 +38,7 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_PRIVATE_KEY }}
-        source: 'target/${{ env.JAR_FILE_NAME }}'
+        source: 'BE/target/${{ env.JAR_FILE_NAME }}'
         target: '${{ env.TARGET_PATH }}'
         
     - name: Deployding ... 
