@@ -27,12 +27,15 @@ jobs:
         node-version: '16.17.1'
     - name : Redirect to folder FE 
       run: cd ${{ env.TARGET_PATH }}
+      shell: bash
     
     - name: Install dependencies
       run: npm install
+      shell: bash
     
     - name: Build project
       run: npm run build
+      shell: bash
     
     - name: Copy files to EC2
       uses: appleboy/scp-action@master
