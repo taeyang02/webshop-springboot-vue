@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      'BE_Webshop'
+    paths: 
+     - 'BE_Webshop/**'
 
 env:
   JAR_FILE_NAME: 'TaeDeploySNAPSHOT2.jar'
