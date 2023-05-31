@@ -1,0 +1,54 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+    paths: 
+     - 'BE_Webshop/**'
+
+env:
+  JAR_FILE_NAME: 'TaeDeploySNAPSHOT2.jar'
+  TARGET_PATH : 'BE_Webshop'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'
+        distribution: 'adopt'
+    
+    - name: Build JAR
+      run: cd BE_Webshop && mvn package -DskipTests
+    
+    - name: Rename JAR
+      run: |
+        mv ${{ env.TARGET_PATH }}/target/Shopping-0.0.1-SNAPSHOT.jar ${{ env.TARGET_PATH }}/target/${{ env.JAR_FILE_NAME }}
+    
+    - name: Copy JAR to EC2
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        source: '${{ env.TARGET_PATH }}/target/${{ env.JAR_FILE_NAME }}'
+        target: 'BE'
+        
+    - name: Deployding ... 
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        script: |
+          #sudo kill -9 $(sudo netstat -plten | grep java | awk '{print $9}' | cut -d '/' -f1)
+          tmux kill-session -t deployment
+          cd BE/${{ env.TARGET_PATH }}/target
+          tmux new-session -d -s deployment 'java -jar ${{ env.JAR_FILE_NAME }}'
