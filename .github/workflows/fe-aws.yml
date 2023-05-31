@@ -9,8 +9,8 @@ on:
 
 env:
   TARGET_PATH: 'FE_Webshop'
-  SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-  SSH_USERNAME: ${{ secrets.EC2_SSH_USERNAME }}
+  SSH_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
+  SSH_USERNAME: ${{ secrets.EC2_USERNAME }}
   EC2_HOST: ${{ secrets.EC2_HOST }}
 
 jobs:
