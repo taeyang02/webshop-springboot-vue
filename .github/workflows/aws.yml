@@ -50,5 +50,5 @@ jobs:
         script: |
           #sudo kill -9 $(sudo netstat -plten | grep java | awk '{print $9}' | cut -d '/' -f1)
           tmux kill-session -t deployment
-          cd ${{ env.TARGET_PATH }}/target
+          cd BE/${{ env.TARGET_PATH }}/target
           tmux new-session -d -s deployment 'java -jar ${{ env.JAR_FILE_NAME }}'
