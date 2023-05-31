@@ -27,7 +27,7 @@ public class ProductController {
     @GetMapping(value = "")
     public Result<?> getAllProducts(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "12") int size
     ) {
         return Result.result(HttpStatus.OK.value(),"Tìm Trang Thành Công",productService.fillAll(PageRequest.of(page,size)));
     }
