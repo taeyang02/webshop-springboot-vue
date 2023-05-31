@@ -32,10 +32,6 @@ jobs:
         npm install
         npm run build
         
-    - name: Tar files
-      run: |
-       tar -czvf /tmp/nVXaBtosQN.tar.gz -C ${{ env.TARGET_PATH }}/dist .
-    
     - name: Copy files to EC2
       uses: appleboy/scp-action@master
       with:
