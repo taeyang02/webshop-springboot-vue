@@ -38,8 +38,8 @@ jobs:
         host: ${{ env.EC2_HOST }}
         username: ${{ env.SSH_USERNAME }}
         key: ${{ env.SSH_PRIVATE_KEY }}
-        source: '${{ env.TARGET_PATH }}/dist/'
-        target: 'FE'
+        source: '${{ env.TARGET_PATH }}/dist/*'
+        target: '/var/www/duonghasagi.online/html'
     
     - name: SSH into EC2
       uses: appleboy/ssh-action@master
