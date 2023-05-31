@@ -27,10 +27,10 @@ jobs:
         node-version: '16.17.1'
     
     - name: Install dependencies
-      run: npm install
+      run: cd ${{ env.TARGET_PATH }} && npm install
     
     - name: Build project
-      run: npm run build
+      run: cd ${{ env.TARGET_PATH }} && npm run build
     
     - name: Copy files to EC2
       uses: appleboy/scp-action@master
@@ -38,7 +38,7 @@ jobs:
         host: ${{ env.EC2_HOST }}
         username: ${{ env.SSH_USERNAME }}
         key: ${{ env.SSH_PRIVATE_KEY }}
-        source: '${{ env.TARGET_PATH }}dist/'
+        source: '${{ env.TARGET_PATH }}/dist/'
         target: '/var/www/duonghasagi.online/html'
     
     - name: SSH into EC2
