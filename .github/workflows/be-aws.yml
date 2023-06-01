@@ -9,7 +9,10 @@ on:
 
 env:
   JAR_FILE_NAME: 'TaeDeploySNAPSHOT2.jar'
-  TARGET_PATH : 'BE_Webshop'
+  TARGET_PATH: 'BE_Webshop'
+  EC2_HOST: ${{ secrets.EC2_HOST }}
+  EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
+  EC2_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
 
 jobs:
   deploy:
@@ -35,18 +38,18 @@ jobs:
     - name: Copy JAR to EC2
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        host: ${{ env.EC2_HOST }}
+        username: ${{ env.EC2_USERNAME }}
+        key: ${{ env.EC2_PRIVATE_KEY }}
         source: '${{ env.TARGET_PATH }}/target/${{ env.JAR_FILE_NAME }}'
         target: 'BE'
         
-    - name: Deployding ... 
+    - name: Deploying ... 
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        host: ${{ env.EC2_HOST }}
+        username: ${{ env.EC2_USERNAME }}
+        key: ${{ env.EC2_PRIVATE_KEY }}
         script: |
           {
             if tmux ls | awk -F: '{print $1}' | grep -wq "deployment"; then
