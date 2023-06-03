@@ -42,7 +42,7 @@ jobs:
         username: ${{ env.EC2_USERNAME }}
         key: ${{ env.EC2_PRIVATE_KEY }}
         source: '${{ env.TARGET_PATH }}/target/${{ env.JAR_FILE_NAME }}'
-        target: 'BE'
+        target: '${{ env.TARGET_PATH }}'
         
     - name: Deploying ... 
       uses: appleboy/ssh-action@master
@@ -56,5 +56,5 @@ jobs:
               tmux kill-session -t deployment
             fi
           }
-          cd BE/${{ env.TARGET_PATH }}/target
+          cd ${{ env.TARGET_PATH }}/${{ env.TARGET_PATH }}/target
           tmux new-session -d -s deployment 'java -jar ${{ env.JAR_FILE_NAME }}'
