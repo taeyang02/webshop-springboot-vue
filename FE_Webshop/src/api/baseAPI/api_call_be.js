@@ -1,5 +1,5 @@
 import axios from 'axios';
-//pro
+//products
 const instance = axios.create({
     baseURL: 'https://www.duonghasagi.online/api/',
     headers: {
